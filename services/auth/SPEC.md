@@ -1,4 +1,4 @@
-# Mosaic Auth — SPEC
+# Opsweave Auth — SPEC
 
 The token model, cookies, password rules and service tokens are defined in `docs/ARCHITECTURE.md` §3. This file covers the endpoints and data.
 

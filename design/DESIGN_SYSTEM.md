@@ -1,4 +1,4 @@
-# MosaicHub Design System
+# Opsweave Design System
 
 One palette and one component language for every app. Products are told apart by **name and icon only**.
 
@@ -30,14 +30,14 @@ This file is the source for `packages/ui/tailwind-preset.ts` and the shadcn/ui C
 | `deep` | `#0B1E3F` | `#0B1E3F` | hero bands, strong buttons, chart series 1 |
 | `success` / `warning` / `danger` / `info` | `#16A34A` / `#D97706` / `#DC2626` / `#0284C7` | `#22C55E` / `#F59E0B` / `#F87171` / `#38BDF8` | status chips and alerts only |
 
-**Hero gradient:** a soft mesh going from `#0B1E3F` through `#1E3A8A` to `#0D9488` at about 25% opacity over `deep`. A faint mosaic-tile pattern sits on top at 6% opacity. White text.
+**Hero gradient:** a soft mesh going from `#0B1E3F` through `#1E3A8A` to `#0D9488` at about 25% opacity over `deep`. A faint woven-thread pattern (fine interlaced diagonal lines) sits on top at 6% opacity. White text.
 
 **Chart series, in order:** `#0B1E3F`, `#2563EB`, `#0D9488`, `#38BDF8`, `#6366F1`, `#94A3B8`. In dark mode, series 1 becomes `#93C5FD`.
 
 **Contrast:** every text/background pair must meet WCAG AA, checked in CI with an axe run in Playwright.
 
 ## Typography
-- **Inter** for all UI text, with `font-feature-settings: "tnum"` on numbers and tables. **JetBrains Mono** for codes (`VCH-2026-00042`, `MH-FIN-0042`).
+- **Inter** for all UI text, with `font-feature-settings: "tnum"` on numbers and tables. **JetBrains Mono** for codes (`VCH-2026-00042`, `OW-FIN-0042`).
 - **Scale:**
 
   | Use | Size / line height | Weight |
@@ -88,5 +88,5 @@ This file is the source for `packages/ui/tailwind-preset.ts` and the shadcn/ui C
   - Paystream → `wallet`
   - Billora → `file-text`
   - Crewboard → `layout-grid`
-  - Portal → the MosaicHub mark
-- **MosaicHub mark:** a 2×2 grid of rounded squares in `deep`, `primary`, `secondary` and `#38BDF8`, followed by the wordmark "MosaicHub" in Inter at weight 600. Each product name is set as "Mosaic" in `text-muted` followed by the product name in `text`, e.g. **Mosaic** Ledgerline.
+  - Portal → the Opsweave mark
+- **Opsweave mark:** three rounded strands woven over and under each other (an interlace inside a rounded square), in `deep`, `primary` and `secondary`, with one `#38BDF8` crossing. It is followed by the wordmark "Opsweave" in Inter at weight 600. Each product name is set as "Opsweave" in `text-muted` followed by the product name in `text`, e.g. **Opsweave** Ledgerline.

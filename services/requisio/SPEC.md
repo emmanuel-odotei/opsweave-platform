@@ -1,4 +1,4 @@
-# Mosaic Requisio (Procurement) — SPEC
+# Opsweave Requisio (Procurement) — SPEC
 
 - **Owns:** vendors, department budgets, purchase requisitions, purchase orders, goods receipts, procurement documents.
 - **Publishes:** nothing.

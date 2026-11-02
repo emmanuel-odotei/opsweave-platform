@@ -1,4 +1,4 @@
-# Mosaic Billora (Invoicing) — SPEC
+# Opsweave Billora (Invoicing) — SPEC
 
 - **Owns:** client invoices, billing-agent assignments, payments, reminders, exchange rates.
 - **Publishes:** `billora.invoices`.

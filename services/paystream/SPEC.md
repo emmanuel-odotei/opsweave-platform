@@ -1,4 +1,4 @@
-# Mosaic Paystream (Payroll) — SPEC
+# Opsweave Paystream (Payroll) — SPEC
 
 - **Owns:** payroll runs (one per department per month), payslip lines, tax and statutory configuration, local copies of compensation and bank details.
 - **Publishes:** `paystream.payslips` (`PUBLISHED`, `RESET`).

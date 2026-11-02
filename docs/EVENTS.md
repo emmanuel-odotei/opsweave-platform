@@ -1,4 +1,4 @@
-# MosaicHub — Kafka Event Catalogue
+# Opsweave — Kafka Event Catalogue
 
 Behaviour rules (outbox, idempotency, DLT, replay) are in `docs/ARCHITECTURE.md` §5. This file defines **what** flows. Each topic has a JSON Schema at `/contracts/<topic>.schema.json`, and the schemas are the executable source of truth. When an event changes, update the schema, this file, and both producer and consumer tests in the same commit.
 
@@ -53,9 +53,9 @@ Every topic also has a `<topic>.dlt` (delete policy, 14-day retention).
 ```json
 {
   "userId": "uuid",
-  "employeeNumber": "MH-FIN-0042",
+  "employeeNumber": "OW-FIN-0042",
   "firstName": "Kofi", "lastName": "Boateng",
-  "email": "kofi.boateng@mosaichub.com",
+  "email": "kofi.boateng@opsweave.com",
   "jobTitle": "Head of Finance",
   "orgId": "uuid", "officeId": "uuid", "departmentCode": "FIN",
   "managerUserId": "uuid | null",
@@ -86,7 +86,7 @@ Every topic also has a `<topic>.dlt` (delete policy, 14-day retention).
 ```json
 {
   "departmentCode": "FIN", "year": 2026, "month": 3,
-  "userId": "uuid", "employeeNumber": "MH-FIN-0042",
+  "userId": "uuid", "employeeNumber": "OW-FIN-0042",
   "runId": "uuid", "publishedAt": "…",
   "currency": "GHS",
   "earnings":   [ { "name": "Basic salary", "amount": "8500.00" } ],

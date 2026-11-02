@@ -1,11 +1,11 @@
-# MosaicHub Portal — SPEC
+# Opsweave Portal — SPEC
 
 The Portal is the entry point at `http://localhost:8080/`. It has no backend of its own: it calls Auth and Roster (REST) and the Router (GraphQL `viewer`). Frontend architecture rules are in `docs/ARCHITECTURE.md` §13; look and feel is in `design/DESIGN_SYSTEM.md`.
 
 ## Pages
 
 ### Public pages (no token)
-- `/login`: email and password, "Forgot password?", and errors for invalid credentials and locked accounts (with an unlock time). A hero panel carries the MosaicHub mosaic motif.
+- `/login`: email and password, "Forgot password?", and errors for invalid credentials and locked accounts (with an unlock time). A hero panel carries the Opsweave woven-thread motif.
 - `/set-password?token=`: checks the token first, then a password field with live strength rules (ARCHITECTURE §3) and a confirm field, then sends the user to login.
 - `/forgot-password`: an email field. Always shows the same confirmation message.
 
@@ -39,6 +39,6 @@ Laid out top to bottom:
 - RTL tests:
   - the launcher shows only apps in the token
   - widgets degrade when one subgraph errors
-  - the theme toggle persists in `localStorage` under the key `mh-theme`
+  - the theme toggle persists in `localStorage` under the key `ow-theme`
   - logout clears state
 - Playwright: login → home → open Ledgerline from a tile → back → log out.

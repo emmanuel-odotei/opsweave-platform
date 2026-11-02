@@ -1,7 +1,7 @@
-# MosaicHub Platform — Portfolio Plan
+# Opsweave Platform — Portfolio Plan
 
 ## 1. Purpose
-Emmanuel's professional projects live in private client repositories. This monorepo is a **clean-room reimplementation** of the *patterns* behind that work, set inside a fictional company called **MosaicHub**:
+Emmanuel's professional projects live in private client repositories. This monorepo is a **clean-room reimplementation** of the *patterns* behind that work, set inside a fictional company called **Opsweave**:
 - RBAC data filtering
 - multi-step approvals
 - audit logging
@@ -16,25 +16,25 @@ Every README carries this statement:
 The AI chatbot (CVA) is out of scope and will be a later project.
 
 ## 2. The company
-- **MosaicHub** is a fictional holding company. Employee emails follow `firstname.lastname@mosaichub.com`; a duplicate becomes `firstname.lastname2@mosaichub.com`, then `3`, and so on.
-- **Organizations:** MosaicHub Ghana (offices: Accra HQ, Kumasi) and MosaicHub Nigeria (office: Lagos).
+- **Opsweave** is a fictional holding company. Employee emails follow `firstname.lastname@opsweave.com`; a duplicate becomes `firstname.lastname2@opsweave.com`, then `3`, and so on.
+- **Organizations:** Opsweave Ghana (offices: Accra HQ, Kumasi) and Opsweave Nigeria (office: Lagos).
 - **Departments** are company-wide, created by HR, each with a unique code: `FIN` Finance, `OPS` Operations, `HR` People, `ENG` Engineering, `PRC` Procurement, `SAL` Sales.
-- **Name check:** before the repo goes public, confirm "MosaicHub" is not a registered trademark of a real company in this space. If it is, choose a new name and rename everywhere in one commit.
+- **Name check:** a web search in November 2026 found no company or product called "Opsweave". "MosaicHub" was dropped because a real business-software company had used it. Before the repo goes public, Emmanuel also searches "Opsweave" in the WIPO Global Brand Database; if a conflict appears, rename everywhere in one commit.
 
 ## 3. Product map
 
 | Product | Folder | Stack | API | Frontend |
 |---|---|---|---|---|
-| Mosaic Auth | `services/auth` | Spring Boot | REST | login & password pages inside Portal |
-| Mosaic Roster (employees) | `services/roster` | Spring Boot | REST | `apps/roster-web` |
-| Mosaic Ledgerline (vouchers) | `services/ledgerline` | Spring Boot | GraphQL subgraph | `apps/finance-web` |
-| Mosaic Requisio (procurement) | `services/requisio` | Spring Boot | GraphQL subgraph | `apps/finance-web` |
-| Mosaic Paystream (payroll) | `services/paystream` | Spring Boot | GraphQL subgraph | `apps/finance-web` |
-| Mosaic Billora (invoicing) | `services/billora` | Spring Boot | GraphQL subgraph | `apps/billora-web` |
-| Mosaic Crewboard (resourcing) | `services/crewboard` | Node + TypeScript + Express | GraphQL subgraph | `apps/crewboard-web` |
+| Opsweave Auth | `services/auth` | Spring Boot | REST | login & password pages inside Portal |
+| Opsweave Roster (employees) | `services/roster` | Spring Boot | REST | `apps/roster-web` |
+| Opsweave Ledgerline (vouchers) | `services/ledgerline` | Spring Boot | GraphQL subgraph | `apps/finance-web` |
+| Opsweave Requisio (procurement) | `services/requisio` | Spring Boot | GraphQL subgraph | `apps/finance-web` |
+| Opsweave Paystream (payroll) | `services/paystream` | Spring Boot | GraphQL subgraph | `apps/finance-web` |
+| Opsweave Billora (invoicing) | `services/billora` | Spring Boot | GraphQL subgraph | `apps/billora-web` |
+| Opsweave Crewboard (resourcing) | `services/crewboard` | Node + TypeScript + Express | GraphQL subgraph | `apps/crewboard-web` |
 | Gateway | `services/gateway` | Spring Cloud Gateway | edge for everything | — |
 | Apollo Router | `infra/router` | Apollo Router | federates the 5 subgraphs | — |
-| MosaicHub Portal | `apps/portal` | React | uses all of the above | `apps/portal` |
+| Opsweave Portal | `apps/portal` | React | uses all of the above | `apps/portal` |
 
 Where the rest lives:
 - Platform-wide rules: `docs/ARCHITECTURE.md`
@@ -173,15 +173,15 @@ Pace is 2 hours per weekday, about 10 hours a week, for about 21 weeks. Each tic
 - how to run it alone with `make dev-<service>`
 
 ## 6. Demo users
-Seeded when `DEMO_SEED=true`. Every demo user's password is `Mosaic@2026`. Auth skips the invite step for seeded users only.
+Seeded when `DEMO_SEED=true`. Every demo user's password is `Opsweave@2026`. Auth skips the invite step for seeded users only.
 
 | Email | Role in the demo |
 |---|---|
-| ama.mensah@mosaichub.com | Super Admin: HR, ADMIN in every app |
-| kofi.boateng@mosaichub.com | Head of FIN: Ledgerline step-1 approver, Requisio approver |
-| efua.asante@mosaichub.com | Finance officer: Ledgerline finance approver, marks vouchers paid |
-| yaw.owusu@mosaichub.com | Payroll officer (Paystream) |
-| chidi.okeke@mosaichub.com | OPS staff, Lagos: requester in Ledgerline and Requisio |
-| abena.darko@mosaichub.com | Billing manager (Billora) |
-| kwame.addo@mosaichub.com | Resource manager (Crewboard) |
-| esi.quaye@mosaichub.com | Engineer with Roster access only |
+| ama.mensah@opsweave.com | Super Admin: HR, ADMIN in every app |
+| kofi.boateng@opsweave.com | Head of FIN: Ledgerline step-1 approver, Requisio approver |
+| efua.asante@opsweave.com | Finance officer: Ledgerline finance approver, marks vouchers paid |
+| yaw.owusu@opsweave.com | Payroll officer (Paystream) |
+| chidi.okeke@opsweave.com | OPS staff, Lagos: requester in Ledgerline and Requisio |
+| abena.darko@opsweave.com | Billing manager (Billora) |
+| kwame.addo@opsweave.com | Resource manager (Crewboard) |
+| esi.quaye@opsweave.com | Engineer with Roster access only |

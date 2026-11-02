@@ -1,4 +1,4 @@
-# Mosaic Roster — SPEC
+# Opsweave Roster — SPEC
 
 - **Owns:** organizations, offices, departments, employees, app access with ADMIN flags, compensation, self-service profiles (including bank details), announcements, payslip history, avatars.
 - **Publishes:** `roster.organizations`, `roster.offices`, `roster.departments`, `roster.employees`, `roster.employee-compensation`.
@@ -48,12 +48,12 @@ Every employee has implicit Roster access to their own profile. HR staff hold Ro
 ## Business rules
 
 ### Company email
-- Built as `lower(ascii(first)) + "." + lower(ascii(last)) + "@mosaichub.com"`. Diacritics are stripped, and anything other than letters and hyphens is removed.
+- Built as `lower(ascii(first)) + "." + lower(ascii(last)) + "@opsweave.com"`. Diacritics are stripped, and anything other than letters and hyphens is removed.
 - On a clash with any employee, active or inactive, append `2`, `3`, … to the last name part.
 - The email is generated once and doesn't change when the name changes, unless HR presses "Regenerate email".
 
 ### Employee numbers
-- Format: `MH-<DEPT>-<4-digit sequence per department>`, e.g. `MH-FIN-0042`.
+- Format: `OW-<DEPT>-<4-digit sequence per department>`, e.g. `OW-FIN-0042`.
 
 ### Department transfers
 - HR schedules a transfer with an effective month, which is always the 1st of a month.
@@ -80,7 +80,7 @@ Any change to compensation **or** bank details publishes on `roster.employee-com
 - **RESET:** delete the payslips matching department + year + month, and record the reset.
 
 ### Payslip PDF
-`GET /me/payslips/{id}/pdf` renders the stored payload with OpenPDF in MosaicHub styling. It isn't stored.
+`GET /me/payslips/{id}/pdf` renders the stored payload with OpenPDF in Opsweave styling. It isn't stored.
 
 ## Endpoints (all under `/api/v1/roster`)
 - **Organization structure:** `GET|POST /organizations`, `PATCH /organizations/{id}`, and the same pattern for `/offices` and `/departments`.

@@ -1,4 +1,4 @@
-# MosaicHub — Platform Architecture
+# Opsweave — Platform Architecture
 
 This file is the single source of truth for rules that apply to every service. A `SPEC.md` adds service-specific behaviour on top and never contradicts this file. If a conflict appears, stop and ask Emmanuel.
 
@@ -45,7 +45,7 @@ flowchart LR
 - **Frontend:** React + TypeScript + Vite + Tailwind + shadcn/ui, React Router, TanStack Query, TanStack Table, React Hook Form + Zod, Recharts, Apollo Client for GraphQL, Vitest + React Testing Library, Playwright.
 - **Infrastructure:** PostgreSQL 17, Apache Kafka (KRaft, single node), Kafka UI, MinIO, Mailpit, and the Grafana `otel-lgtm` image (optional profile).
 
-## 3. Authentication (Mosaic Auth)
+## 3. Authentication (Opsweave Auth)
 - **Single origin.** Everything is served through the Gateway at `http://localhost:8080`. Because of that, cookies work across all five React apps and no CORS setup is needed.
 - **Users.** Auth consumes `roster.employees` and keeps a `credentials` row per employee: `userId`, `email`, `status`, `passwordHash`, `failedAttempts`, `lockedUntil`.
 - **Account rules:**
@@ -68,7 +68,7 @@ flowchart LR
   - Opaque value, 7-day lifetime, stored as a hash, rotated on every use.
   - If an already-used token is presented again, revoke that token's whole family.
   - Sent as an `httpOnly`, `SameSite=Strict` cookie scoped to path `/api/v1/auth`.
-  - The refresh endpoint also requires the header `X-Requested-With: mosaichub`.
+  - The refresh endpoint also requires the header `X-Requested-With: opsweave`.
   - On page load, each app calls `POST /api/v1/auth/refresh` to get an access token. That's what makes single sign-on work across the apps.
 - **Signing keys.** Stored in Auth's database in an `auth_signing_keys` table (`kid`, active flag, private key encrypted with `AUTH_KEY_ENCRYPTION_SECRET`). Public keys are exposed at `/api/v1/auth/.well-known/jwks.json`. The table supports rotation.
 - **Service tokens:**
@@ -248,7 +248,7 @@ The topic catalogue and the event envelope are in `docs/EVENTS.md`.
   5. invoice sent → payment → Crewboard revenue updates
 
 ## 12. Email
-- Each service sends its own email through Spring Mail (or Nodemailer) to Mailpit, using Thymeleaf HTML templates in the MosaicHub style.
+- Each service sends its own email through Spring Mail (or Nodemailer) to Mailpit, using Thymeleaf HTML templates in the Opsweave style.
 - Emails are triggered **after commit**, by a listener on the service's own outbox or domain event, so a rolled-back transaction never sends mail.
 
 ## 13. Frontend architecture

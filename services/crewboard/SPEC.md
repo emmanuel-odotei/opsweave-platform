@@ -1,4 +1,4 @@
-# Mosaic Crewboard (Resourcing) — SPEC
+# Opsweave Crewboard (Resourcing) — SPEC
 
 - **Owns:** clients, projects, employee-to-project assignments, skills.
 - **Publishes:** `crewboard.clients`, `crewboard.projects`.

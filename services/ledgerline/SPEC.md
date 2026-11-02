@@ -1,4 +1,4 @@
-# Mosaic Ledgerline (Vouchers) — SPEC
+# Opsweave Ledgerline (Vouchers) — SPEC
 
 - **Owns:** payment vouchers, their approvals, receipts and comments.
 - **Publishes:** nothing.

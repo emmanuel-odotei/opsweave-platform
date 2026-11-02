@@ -13,13 +13,11 @@ It is never hosted. Recruiters run it locally with `make up` (which wraps `docke
 Every README carries this statement:
 > This is a personal reimplementation, written from scratch with fictional data, of the kinds of systems I build professionally. It contains no code, data or business rules from any employer or client.
 
-The AI chatbot (CVA) is out of scope and will be a later project.
-
 ## 2. The company
-- **Opsweave** is a fictional holding company. Employee emails follow `firstname.lastname@opsweave.com`; a duplicate becomes `firstname.lastname2@opsweave.com`, then `3`, and so on.
-- **Organizations:** Opsweave Ghana (offices: Accra HQ, Kumasi) and Opsweave Nigeria (office: Lagos).
+- **Opsweave** is a fictional holding company. Employee emails follow `firstname.lastname@opsweave.com`; a duplicate becomes `lastname.firstname@opsweave.com`.
+- **Organizations:** Opsweave Ghana (offices: Accra, Tamale, Koforidua) and Opsweave Nigeria (office: Lagos).
 - **Departments** are company-wide, created by HR, each with a unique code: `FIN` Finance, `OPS` Operations, `HR` People, `ENG` Engineering, `PRC` Procurement, `SAL` Sales.
-- **Name check:** a web search in November 2026 found no company or product called "Opsweave". "MosaicHub" was dropped because a real business-software company had used it. Before the repo goes public, Emmanuel also searches "Opsweave" in the WIPO Global Brand Database; if a conflict appears, rename everywhere in one commit.
+- **Name check:** a web search in November 2026 found no company or product called "Opsweave". Before the repo goes public, Emmanuel also searches "Opsweave" in the WIPO Global Brand Database; if a conflict appears, rename everywhere in one commit.
 
 ## 3. Product map
 
@@ -43,7 +41,7 @@ Where the rest lives:
 - Teaching rules: `docs/TEACHING.md`
 
 ## 4. Milestones and tickets
-Pace is 2 hours per weekday, about 10 hours a week, for about 21 weeks. Each ticket takes 1–3 sessions. The `[FE: …]` tag says who writes the frontend code in that milestone (defined in `docs/TEACHING.md`). Tick a ticket only when its tests pass.
+Pace is at least 2 hours per weekday, about 10 hours a week, for about 21 weeks. Each ticket takes 1–3 sessions. The `[FE: …]` tag says who write the frontend code in that milestone (defined in `docs/TEACHING.md`). Tick a ticket only when its tests pass.
 
 ### M0 — Platform skeleton (week 1)
 - [ ] **M0.1** Monorepo layout:

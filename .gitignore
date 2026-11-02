@@ -1,0 +1,38 @@
+# Java / Maven
+target/
+*.class
+hs_err_pid*
+
+# Node / frontend
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+.vite/
+playwright-report/
+test-results/
+blob-report/
+
+# Environment and secrets (commit .env.example, never .env)
+.env
+.env.*
+!.env.example
+
+# IntelliJ: ignore IDE state, keep shared run configurations
+.idea/
+*.iml
+!.run/
+
+# VS Code: keep shared settings only
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Local Docker data, if any bind mounts are added
+.data/
+
+# Logs and OS files
+*.log
+logs/
+.DS_Store
+Thumbs.db

@@ -14,10 +14,10 @@ Every README carries this statement:
 > This is a personal reimplementation, written from scratch with fictional data, of the kinds of systems I build professionally. It contains no code, data or business rules from any employer or client.
 
 ## 2. The company
-- **Opsweave** is a fictional holding company. Employee emails follow `firstname.lastname@opsweave.com`; a duplicate becomes `lastname.firstname@opsweave.com`.
+- **Opsweave** is a fictional holding company. Employee emails follow `firstname.lastname@opsweave.com`; a duplicate becomes `lastname.firstname@opsweave.com`, then `middlename.lastname@opsweave.com` (when the employee has a middle name). If all of those are taken, append `2`, `3`, … to the last name in the first form (`firstname.lastname2@opsweave.com`).
 - **Organizations:** Opsweave Ghana (offices: Accra, Tamale, Koforidua) and Opsweave Nigeria (office: Lagos).
 - **Departments** are company-wide, created by HR, each with a unique code: `FIN` Finance, `OPS` Operations, `HR` People, `ENG` Engineering, `PRC` Procurement, `SAL` Sales.
-- **Name check:** a web search in November 2026 found no company or product called "Opsweave". Before the repo goes public, Emmanuel also searches "Opsweave" in the WIPO Global Brand Database; if a conflict appears, rename everywhere in one commit.
+- **Name check:** a web search in November 2026 found no company or product called "Opsweave". "MosaicHub" was dropped because a real business-software company had used it. The repo is public from the start, so Emmanuel searches "Opsweave" in the WIPO Global Brand Database before the first push; if a conflict appears, rename everywhere before going further.
 
 ## 3. Product map
 
@@ -41,13 +41,14 @@ Where the rest lives:
 - Teaching rules: `docs/TEACHING.md`
 
 ## 4. Milestones and tickets
-Pace is at least 2 hours per weekday, about 10 hours a week, for about 21 weeks. Each ticket takes 1–3 sessions. The `[FE: …]` tag says who write the frontend code in that milestone (defined in `docs/TEACHING.md`). Tick a ticket only when its tests pass.
+Pace is at least 2 hours per weekday, about 10 hours a week, for about 21 weeks. Each ticket takes 1–3 sessions. The `[FE: …]` tag says who writes the frontend code in that milestone (defined in `docs/TEACHING.md`). Tick a ticket only when its tests pass.
 
 ### M0 — Platform skeleton (week 1)
 - [ ] **M0.1** Monorepo layout:
   - Maven parent POM plus a `libs/java/platform-common` module
   - pnpm workspace for `apps/*` and `packages/*`
   - `.editorconfig`, `.gitignore`, Conventional Commits
+  - README note: after cloning, run `git config core.hooksPath .githooks` to enable the local guard against committing on `main`
 - [ ] **M0.2** Resolve the versions, pin them, and record them in `docs/VERSIONS.md` (rules in CLAUDE.md).
 - [ ] **M0.3** `docker-compose.yml` with the infrastructure containers and the Compose profiles from ARCHITECTURE §10:
   - Postgres with an init script that creates one database and one user per service
@@ -60,7 +61,7 @@ Pace is at least 2 hours per weekday, about 10 hours a week, for about 21 weeks.
   - frontend lint, typecheck and test
   - Docker image build
 
-  Root README with CI badges and the clean-room statement.
+  Root README with CI badges and the clean-room statement. Once CI runs green on a PR, Emmanuel adds its jobs as required status checks in the `protect-main` ruleset.
 - [ ] **M0.6** `/contracts` folder with the event-envelope JSON Schema and schema-validation test helpers in Java and TypeScript.
 
 ### M1 — Auth, Roster and the Portal shell (weeks 2–5) `[FE: Claude builds and teaches]`
@@ -106,7 +107,7 @@ Pace is at least 2 hours per weekday, about 10 hours a week, for about 21 weeks.
   - audit log and emails
 - [ ] **M2.4** Receipt upload and download through presigned URLs.
 - [ ] **M2.5** Finance web shell: a section per app and the "no access yet" state. Then the Ledgerline screens.
-- [ ] **M2.6** Make the repo public with a "work in progress" README and the first screenshots.
+- [ ] **M2.6** Refresh the README: "work in progress" status, first screenshots and GIFs. (The repo is public from day one.)
 
 ### M3 — Requisio (weeks 9–10) `[FE: co-write]`
 - [ ] **M3.1** Requisio subgraph: consumers, ADMIN level, vendors, budgets.

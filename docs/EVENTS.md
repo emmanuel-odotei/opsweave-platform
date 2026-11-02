@@ -1,6 +1,6 @@
 # Opsweave — Kafka Event Catalogue
 
-Behaviour rules (outbox, idempotency, DLT, replay) are in `docs/ARCHITECTURE.md` §5. This file defines **what** flows. Each topic has a JSON Schema at `/contracts/<topic>.schema.json`, and the schemas are the executable source of truth. When an event changes, update the schema, this file, and both producer and consumer tests in the same commit.
+Behaviour rules (outbox, idempotency, DLT, replay) are in `docs/ARCHITECTURE.md` §5. This file defines **what** flows. Each topic has a JSON Schema at `/contracts/<topic>.schema.json`, and the schemas are the executable source of truth. When an event changes, update the schema, this file, and both producer and consumer tests in the same change set.
 
 ## Envelope (every message)
 
@@ -54,7 +54,7 @@ Every topic also has a `<topic>.dlt` (delete policy, 14-day retention).
 {
   "userId": "uuid",
   "employeeNumber": "OW-FIN-0042",
-  "firstName": "Kofi", "lastName": "Boateng",
+  "firstName": "Kofi", "middleName": "Nana | null", "lastName": "Boateng",
   "email": "kofi.boateng@opsweave.com",
   "jobTitle": "Head of Finance",
   "orgId": "uuid", "officeId": "uuid", "departmentCode": "FIN",

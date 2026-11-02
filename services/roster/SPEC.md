@@ -29,10 +29,10 @@ Every employee has implicit Roster access to their own profile. HR staff hold Ro
 - `offices`: `id`, `org_id`, `name`, `city`, `status`
 - `departments`: `code` PK (2–5 uppercase letters, immutable), `name`, `head_user_id`, `status`
 - `employees`:
-  - identity: `user_id` PK, `employee_number` unique, `first_name`, `last_name`, `email` unique
-  - placement: `job_title`, `org_id`, `office_id`, `department_code`, `manager_user_id`
-  - lifecycle: `hire_date`, `status`, `avatar_file_id`
-  - `created_at`, `updated_at`
+    - identity: `user_id` PK, `employee_number` unique, `first_name`, `middle_name` (optional), `last_name`, `email` unique
+    - placement: `job_title`, `org_id`, `office_id`, `department_code`, `manager_user_id`
+    - lifecycle: `hire_date`, `status`, `avatar_file_id`
+    - `created_at`, `updated_at`
 - `employee_number_history`: `user_id`, `employee_number`, `department_code`, `valid_from`, `valid_to`
 - `department_sequences`: `department_code`, `next_value`. Numbers are never reused.
 - `pending_transfers`: `user_id`, `to_department_code`, `to_office_id` (optional), `effective_month` (always the 1st), `created_by`
@@ -49,7 +49,11 @@ Every employee has implicit Roster access to their own profile. HR staff hold Ro
 
 ### Company email
 - Built as `lower(ascii(first)) + "." + lower(ascii(last)) + "@opsweave.com"`. Diacritics are stripped, and anything other than letters and hyphens is removed.
-- On a clash with any employee, active or inactive, append `2`, `3`, … to the last name part.
+- On a clash with any employee, active or inactive, try these in order and take the first free one:
+    1. `lastname.firstname@opsweave.com`
+    2. `middlename.lastname@opsweave.com`, only when the employee has a middle name (if there are several middle names, use the first)
+    3. `firstname.lastname2@opsweave.com`, then `3`, `4`, …
+- Middle names go through the same normalisation as first and last names.
 - The email is generated once and doesn't change when the name changes, unless HR presses "Regenerate email".
 
 ### Employee numbers
@@ -58,10 +62,10 @@ Every employee has implicit Roster access to their own profile. HR staff hold Ro
 ### Department transfers
 - HR schedules a transfer with an effective month, which is always the 1st of a month.
 - A scheduler runs at 00:05 Africa/Accra on the 1st of each month and applies due transfers:
-  1. new employee number from the new department's sequence
-  2. close the old number in the history table
-  3. update the department (and office, if one was given)
-  4. publish `UPDATED`
+    1. new employee number from the new department's sequence
+    2. close the old number in the history table
+    3. update the department (and office, if one was given)
+    4. publish `UPDATED`
 - The effective month must be the next month or later. That way, each month's payroll for a department always sees a stable list of members.
 
 ### Deactivation
@@ -85,19 +89,19 @@ Any change to compensation **or** bank details publishes on `roster.employee-com
 ## Endpoints (all under `/api/v1/roster`)
 - **Organization structure:** `GET|POST /organizations`, `PATCH /organizations/{id}`, and the same pattern for `/offices` and `/departments`.
 - **Employees:**
-  - `GET /employees` with filters: q, orgId, officeId, departmentCode, status, app. Scoped.
-  - `POST /employees`, `GET|PATCH /employees/{userId}`
-  - `POST /employees/{userId}/deactivate`, `/reactivate`, `/resend-invite`, `/regenerate-email`
-  - `POST /employees/{userId}/transfers`, `DELETE /employees/{userId}/transfers/pending`
-  - `PUT /employees/{userId}/app-access` with `[{app, admin}]`
-  - `GET|PUT /employees/{userId}/compensation`
-  - `GET /employees/{userId}/avatar`
+    - `GET /employees` with filters: q, orgId, officeId, departmentCode, status, app. Scoped.
+    - `POST /employees`, `GET|PATCH /employees/{userId}`
+    - `POST /employees/{userId}/deactivate`, `/reactivate`, `/resend-invite`, `/regenerate-email`
+    - `POST /employees/{userId}/transfers`, `DELETE /employees/{userId}/transfers/pending`
+    - `PUT /employees/{userId}/app-access` with `[{app, admin}]`
+    - `GET|PUT /employees/{userId}/compensation`
+    - `GET /employees/{userId}/avatar`
 - **Directory:** `GET /directory?q=` (any active employee).
 - **Me:**
-  - `GET|PATCH /me/profile` (including bank details)
-  - `POST /me/avatar/upload-url`, `POST /me/avatar/confirm`
-  - `GET /me/payslips?year=`, `GET /me/payslips/{id}/pdf`
-  - `GET /me/summary`, `GET /me/notifications`, `POST /me/notifications/{id}/read`, `POST /me/notifications/read-all`
+    - `GET|PATCH /me/profile` (including bank details)
+    - `POST /me/avatar/upload-url`, `POST /me/avatar/confirm`
+    - `GET /me/payslips?year=`, `GET /me/payslips/{id}/pdf`
+    - `GET /me/summary`, `GET /me/notifications`, `POST /me/notifications/{id}/read`, `POST /me/notifications/read-all`
 - **Announcements:** `GET /announcements` (visible to the user), `POST /announcements`, `PATCH /announcements/{id}`
 - **Admin:** `GET|POST|PATCH|DELETE /access-levels`, `PUT /access-levels/{id}/members`, `GET /audit-log`
 
@@ -107,11 +111,11 @@ Any change to compensation **or** bank details publishes on `roster.employee-com
 1. **Employees list:** search, filter chips, status badges, "Add employee" button.
 2. **Add/Edit employee:** a wizard with three steps, Basics → Placement → App access (ADMIN toggles per app). The generated email and number are previewed live.
 3. **Employee detail** with tabs:
-   - Overview
-   - Employment (including transfer history and the scheduled transfer)
-   - App access
-   - Compensation (permission-gated)
-   - Audit
+    - Overview
+    - Employment (including transfer history and the scheduled transfer)
+    - App access
+    - Compensation (permission-gated)
+    - Audit
 4. **Organization structure:** organizations, then offices (as cards), then departments with code, head and headcount.
 5. **Access levels:** list, editor (permission checkboxes grouped by area, org/office scope pickers), members.
 6. **My profile:** personal details, bank details (masked after save), avatar upload, change password.
